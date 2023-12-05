@@ -105,7 +105,7 @@ var dt_layer2:int
 
 ## Arf2 JSON Output  (Encoded)
 
-"0" represents an encoded interger.
+"0" represents an encoded interger, "[0]" or "000" represents a series of intergers.
 
 ```json
 {
@@ -122,7 +122,7 @@ var dt_layer2:int
             0,
             [0],
             [
-                [0,···]
+                [0, 000]
             ]
         ]
     ],

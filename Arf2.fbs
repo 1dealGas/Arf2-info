@@ -2,7 +2,7 @@
 // (c) 2023- 1dealGas, under the MIT License.
 
 table WishChild {
-    p:uint8;   // (8)dtime_x105
+    p:uint8;   // (8)dtime_x105, Runtime Only
     dt:uint32;   // (32)dtime_x105
     anodes:[uint32];   // AngleNode: (13)degree+(19)ms
 }
@@ -35,6 +35,6 @@ table Arf2 {
     dts_layer2:[uint64];   // (14)ratio_x105+(18)init_ms+(32)base_x105
     index:[Arf2Index];
 
-    // std::map<uint64_t, uint64_t> last_vec;
-    // std::vector<uint64_t> blnums;
+    // Runtime Stuff
+    // std::map<uint64_t, uint64_t> last_vec;    std::vector<uint64_t> blnums;
 }

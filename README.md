@@ -144,7 +144,7 @@ int dt_layer2;
 
 // Cache
 extern float SIN[901];
-extern float ECOS[901];
+extern float COS[901];
 extern float ESIN[1001];
 extern float ECOS[1001];
 extern float SQRT[1001];

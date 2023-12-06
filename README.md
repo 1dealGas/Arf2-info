@@ -155,7 +155,7 @@ extern double RCP[8192];
 
 ### JSON  ->  *.arf  Converter
 
-1. Get `export.json` from `Arf`
+1. Get the `export.json` from `Arf`,  and then Put it into your working directory.
 
 2. Gather files below:
    
@@ -169,4 +169,4 @@ extern double RCP[8192];
    
    - `ConvertToArf2.py`
 
-3. Open a Terminal and run `python ConvertToArf2.py export.json` in your working directory.
+3. Open a Terminal and Run `python ConvertToArf2.py export.json` in your working directory.

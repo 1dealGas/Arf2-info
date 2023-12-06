@@ -54,7 +54,7 @@ class Hint:
 # Inompressible
 class WishChild:
     32 var dtime_x105:int   # See Class "DeltaNode".
-    -- var anodes:Array[AngleNode]   # DtLimit: 8192ms
+    8 var anodes:Array[AngleNode]   # MaxSize: 256   # DtLimit: 8192ms
 
 class WishGroup:
     16 var max_visible_distance:float   # [0,8)   # Precision: 1/8192

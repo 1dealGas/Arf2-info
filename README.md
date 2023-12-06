@@ -4,21 +4,15 @@ Info and tools of **Aerials Chart[fumen] Format 2**.
 
 ### EaseType
 
-EaseType  **0** :   `xLinear`, `yLinear`
+| init<end | 0      | 1      | 2      | 3           | 4      | 5      | 6           | 7      |
+|:--------:|:------:|:------:|:------:|:-----------:|:------:|:------:|:-----------:|:------:|
+| **x**    | Linear | InQuad | InCirc | Sin(rt*π/2) | Linear | Linear | Linear      | InQuad |
+| **y**    | Linear | Linear | Linear | Linear      | InQuad | InCirc | Sin(rt*π/2) | InQuad |
 
-Else if `curve_init < curve_end`  (Type `Linear` omitted)  :
-
-|       | 1      | 2      | 3           | 4      | 5      | 6           | 7      |
-|:-----:|:------:|:------:|:-----------:|:------:|:------:|:-----------:|:------:|
-| **x** | InQuad | InCirc | Sin(rt*π/2) |        |        |             | InQuad |
-| **y** |        |        |             | InQuad | InCirc | Sin(rt*π/2) | InQuad |
-
-Else :
-
-|       | 1       | 2       | 3           | 4       | 5       | 6           | 7       |
-|:-----:|:-------:|:-------:|:-----------:|:-------:|:-------:|:-----------:|:-------:|
-| **x** | OutQuad | OutCirc | Cos(rt*π/2) |         |         |             | OutQuad |
-| **y** |         |         |             | OutQuad | OutCirc | Cos(rt*π/2) | OutQuad |
+| init>end | 0      | 1       | 2       | 3           | 4       | 5       | 6           | 7       |
+|:--------:|:------:|:-------:|:-------:|:-----------:|:-------:|:-------:|:-----------:|:-------:|
+| **x**    | Linear | OutQuad | OutCirc | Cos(rt*π/2) | Linear  | Linear  | Linear      | OutQuad |
+| **y**    | Linear | Linear  | Linear  | Linear      | OutQuad | OutCirc | Cos(rt*π/2) | OutQuad |
 
 ### Editor Arf2 Structure
 
@@ -94,6 +88,7 @@ class Arf2:
     var dts_layer1:Array[DeltaNode]
     var dts_layer2:Array[DeltaNode]
     var index:Array[]
+
 ```
 
 ## Arf2 JSON Output  (Encoded)
@@ -158,6 +153,6 @@ double RCP[8192];
 
 ## Tools
 
-###### JSON  ->  *.arf  Converter
+##### JSON  ->  *.arf  Converter
 
 Under Construction

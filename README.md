@@ -119,7 +119,7 @@ var dt_layer2:int
 
 ## Arf2 JSON Output  (Encoded)
 
-`0` represents an encoded interger, `[0]` or `""` represents a series of intergers.
+`0` represents an encoded interger, `[0]`  &  `""` represent multiple encoded intergers.
 
 ```json
 {

@@ -33,7 +33,7 @@ class PosNode:
     9 var curve_end:float   # [0,1]   # Precision: 1/512
     3 var easetype:int   # See "EaseType" Section.
     13 var x:float   # [-16,32]   # Precision: 1/128
-    12 var y:float   # [-8,16]   # Precisin: 1/128
+    12 var y:float   # [8,16]   # Precisin: 1/128
     18 var ms:int   # [0,512000]   # Precision: 2ms
 
 class DeltaNode:
@@ -58,18 +58,22 @@ class Hint:
 
 # Inompressible
 class WishChild:
-    32 var dtime_x100000:int   # See Class "DeltaNode".
-    13 var anode:Array[AngleNode]   # MaxSize: 8192   # DtLimit: 8192ms
+    32 var dtime_x105:int   # See Class "DeltaNode".
+    -- var anodes:Array[AngleNode]   # MaxSize: 8192   # DtLimit: 8192ms
 
 class WishGroup:
+    16 var max_visible_distance:float   # [0,8)   # Precision: 1/8192
+    1 var layer:int   # 0 or 1
+
     5 var nodes:Array[PosNode]   # MaxSize: 32   # DtLimit: 16384ms
     10 var childs:Array[WishChild]   # MaxSize: 1024
 
-    1 var layer:int   # 0 or 1
-    16 var max_visible_distance:float   # [0,8)   # Precision: 1/8192
-
     # Editor Only
     - var label:String   # Will be omited in the compiling result.
+
+class Arf2Index:
+    var widx:Array[int]
+    var hidx:Array[int]
 
 class Arf2:
 
@@ -80,41 +84,16 @@ class Arf2:
     var wgo_required:int
     var hgo_required:int
 
+    # Chart[fumen] body
+    var wish:Array[WishGroup]
+    var hint:Array[Hint]
+
     # Traits
     # Camera Args will be adjustable at runtime, and so is panel texts.
     var special_hint:int
     var dts_layer1:Array[DeltaNode]
     var dts_layer2:Array[DeltaNode]
-
-    # Chart[fumen] body
-    var wish:Array[WishGroup]
-    var hint:Array[Hint]
-
-    # Index
-    # Inner Arrays are filled with ints.
-    var widx:Array[Array]
-    var hidx:Array[Array]
-
-
-# Runtime(API)
-var Arf:Arf2
-var xscale:float
-var yscale:float
-var xdelta:float
-var ydelta:float
-var rotdeg:float
-
-# Runtime(Internal)
-# Maps & Pointers Omitted
-var dt_progress:int
-var dt_layer1:int
-var dt_layer2:int
-# float SIN[901];
-# float ECOS[901];
-# float ESIN[1001];
-# float ECOS[1001];
-# float SQRT[1001];
-# double RCP[8192];
+    var index:Array[]
 ```
 
 ## Arf2 JSON Output  (Encoded)
@@ -128,9 +107,6 @@ var dt_layer2:int
     "total_hints": 0,
     "wgo_required": 0,
     "hgo_required": 0,
-    "special_hint": 0,
-    "dts_layer1": [0],
-    "dts_layer2": [0],
     "wish": [
         [
             0,
@@ -141,15 +117,47 @@ var dt_layer2:int
         ]
     ],
     "hint": [0],
-    "widx": [
-        [0]
-    ],
-    "hidx": [
-        [0]
+    "special_hint": 0,
+    "dts_layer1": [0],
+    "dts_layer2": [0],
+    "index": [
+        [
+            [0],
+            [0]
+        ]
     ]
 }
 ```
 
-## JSON  ->  *.arf  Converter
+## Runtime Variables
+
+```cpp
+// API
+Arf2 Arf;
+float xscale;
+float yscale;
+float xdelta;
+float ydelta;
+float rotdeg;
+
+// Internal
+// Maps & Pointers Omitted
+int special_hint;
+int dt_progress;
+int dt_layer1;
+int dt_layer2;
+
+// Cache
+float SIN[901];
+float ECOS[901];
+float ESIN[1001];
+float ECOS[1001];
+float SQRT[1001];
+double RCP[8192];
+```
+
+## Tools
+
+###### JSON  ->  *.arf  Converter
 
 Under Construction

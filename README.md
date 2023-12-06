@@ -1,10 +1,24 @@
-# Arf2-Utils
+# Arf2-utils
 
 Info and tools of **Aerials Chart[fumen] Format 2**.
 
 ### EaseType
 
-Under Construction
+EaseType  **0** :   `xLinear`, `yLinear`
+
+Else if `curve_init < curve_end`  (Type `Linear` omitted)  :
+
+|       | 1      | 2      | 3           | 4      | 5      | 6           | 7      |
+|:-----:|:------:|:------:|:-----------:|:------:|:------:|:-----------:|:------:|
+| **x** | InQuad | InCirc | Sin(rt*π/2) |        |        |             | InQuad |
+| **y** |        |        |             | InQuad | InCirc | Sin(rt*π/2) | InQuad |
+
+Else :
+
+|       | 1       | 2       | 3           | 4       | 5       | 6           | 7       |
+|:-----:|:-------:|:-------:|:-----------:|:-------:|:-------:|:-----------:|:-------:|
+| **x** | OutQuad | OutCirc | Cos(rt*π/2) |         |         |             | OutQuad |
+| **y** |         |         |             | OutQuad | OutCirc | Cos(rt*π/2) | OutQuad |
 
 ### Editor Arf2 Structure
 
@@ -105,7 +119,7 @@ var dt_layer2:int
 
 ## Arf2 JSON Output  (Encoded)
 
-"0" represents an encoded interger, "[0]" or "000" represents a series of intergers.
+`0` represents an encoded interger, `[0]` or `""` represents a series of intergers.
 
 ```json
 {
@@ -122,7 +136,7 @@ var dt_layer2:int
             0,
             [0],
             [
-                [0, 000]
+                [0, ""]
             ]
         ]
     ],

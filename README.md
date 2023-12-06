@@ -33,6 +33,7 @@ class PosNode:
 class DeltaNode:
     # ratio = bpm * scale / 15000
     # ratio = dx/d(mstime) or dy/d(mstime)
+    # dbpm(bpm*scale) range: [-2400, -0.15]&[0.15, 2400]
     14 var ratio_x105:int   # [0,16000]
 
     18 var init_ms:int   # [0,512000]   # Precision: 2ms
@@ -53,7 +54,7 @@ class Hint:
 # Inompressible
 class WishChild:
     32 var dtime_x105:int   # See Class "DeltaNode".
-    -- var anodes:Array[AngleNode]   # MaxSize: 8192   # DtLimit: 8192ms
+    -- var anodes:Array[AngleNode]   # DtLimit: 8192ms
 
 class WishGroup:
     16 var max_visible_distance:float   # [0,8)   # Precision: 1/8192
@@ -87,7 +88,7 @@ class Arf2:
     var special_hint:int
     var dts_layer1:Array[DeltaNode]
     var dts_layer2:Array[DeltaNode]
-    var index:Array[]
+    var index:Array[Arf2Index]
 ```
 
 ## Arf2 JSON Output  (Encoded)
@@ -152,6 +153,6 @@ double RCP[8192];
 
 ## Tools
 
-#### JSON  ->  *.arf  Converter
+### JSON  ->  *.arf  Converter
 
 Under Construction

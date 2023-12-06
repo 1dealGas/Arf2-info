@@ -143,16 +143,30 @@ int dt_layer1;
 int dt_layer2;
 
 // Cache
-float SIN[901];
-float ECOS[901];
-float ESIN[1001];
-float ECOS[1001];
-float SQRT[1001];
-double RCP[8192];
+extern float SIN[901];
+extern float ECOS[901];
+extern float ESIN[1001];
+extern float ECOS[1001];
+extern float SQRT[1001];
+extern double RCP[8192];
 ```
 
 ## Tools
 
 ### JSON  ->  *.arf  Converter
 
-Under Construction
+1. Get `export.json` from `Arf`
+
+2. Gather files below:
+   
+   - `Arf2.py`  (In `FlatBuffers-Gemerated` volume)
+   
+   - `Arf2Index.py` (In `FlatBuffers-Gemerated` volume)
+   
+   - `WishChild.py` (In `FlatBuffers-Gemerated` volume)
+   
+   - `WishGroup.py` (In `FlatBuffers-Gemerated` volume)
+   
+   - `ConvertToArf2.py`
+
+3. Open a Terminal and run `python ConvertToArf2.py export.json` in your working directory.

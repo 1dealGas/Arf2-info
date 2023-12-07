@@ -79,8 +79,8 @@ class Arf2:
     var hgo_required:int
 
     # Chart[fumen] body
-    var wish:Array[WishGroup]
-    var hint:Array[Hint]
+    var wish:Array[WishGroup]   # MaxSize: 16384
+    var hint:Array[Hint]   # MaxSize: 16384
 
     # Traits
     # Camera Args will be adjustable at runtime, and so is panel texts.

@@ -126,15 +126,17 @@ class Arf2:
 }
 ```
 
-## How to load `Arf2 JSON Output` into `AcPlay`
+## How to play an `Arf` work in `AcPlay`
 
-1. Acquire the FlatBuffers compiler `flatc` .
+1. Acquire `Arf2.fbs` and `flatc` (the FlatBuffers compiler) .
 
-2. Convert the output :
+2. Export the work, and use the command below to convert the output `export.json` :
    
    `flatc --binary Arf2.fbs export.json`
 
-3. Utilize the conversion result `export.bin` :
+3. Utilize the conversion result `export.bin` .
+
+   Usually, we rename the conversion result to `[id].arf` .
    
    ```lua
    local fm = sys.get_resource("Arf/export.bin")

@@ -2,7 +2,7 @@
 
 Info of **Aerials Chart[fumen] Format 2**.
 
-### EaseType
+## EaseType
 
 | init<end | 0      | 1          | 2          | 3               | 4          | 5          | 6               | 7          |
 |:--------:|:------:|:----------:|:----------:|:---------------:|:----------:|:----------:|:---------------:|:----------:|
@@ -14,7 +14,7 @@ Info of **Aerials Chart[fumen] Format 2**.
 | **x**    | Linear | **OutQuad** | **OutCirc** | **Cos(rt*π/2)** | Linear      | Linear      | Linear          | **OutQuad** |
 | **y**    | Linear | Linear      | Linear      | Linear          | **OutQuad** | **OutCirc** | **Cos(rt*π/2)** | **OutQuad** |
 
-### Editor Arf2 Structure
+## Editor Arf2 Structure
 
 ```gdscript
 # Compressible
@@ -128,7 +128,7 @@ class Arf2:
 
 ## How to play an `Arf` work in `AcPlay`
 
-1. Acquire `Arf2.fbs` and `flatc` (the FlatBuffers compiler) .
+1. Acquire `Arf2.fbs` and `flatc` (the [FlatBuffers](https://github.com/google/flatbuffers/releases) compiler) .
 
 2. Export the work, and use the command below to convert the output `export.json` :
    

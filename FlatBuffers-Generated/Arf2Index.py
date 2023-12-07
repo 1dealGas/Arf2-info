@@ -29,14 +29,14 @@ class Arf2Index(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         if o != 0:
             a = self._tab.Vector(o)
-            return self._tab.Get(flatbuffers.number_types.Uint32Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 4))
+            return self._tab.Get(flatbuffers.number_types.Uint16Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 2))
         return 0
 
     # Arf2Index
     def WidxAsNumpy(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         if o != 0:
-            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint32Flags, o)
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint16Flags, o)
         return 0
 
     # Arf2Index
@@ -56,14 +56,14 @@ class Arf2Index(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
         if o != 0:
             a = self._tab.Vector(o)
-            return self._tab.Get(flatbuffers.number_types.Uint32Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 4))
+            return self._tab.Get(flatbuffers.number_types.Uint16Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 2))
         return 0
 
     # Arf2Index
     def HidxAsNumpy(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
         if o != 0:
-            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint32Flags, o)
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint16Flags, o)
         return 0
 
     # Arf2Index
@@ -91,7 +91,7 @@ def AddWidx(builder, widx):
     Arf2IndexAddWidx(builder, widx)
 
 def Arf2IndexStartWidxVector(builder, numElems):
-    return builder.StartVector(4, numElems, 4)
+    return builder.StartVector(2, numElems, 2)
 
 def StartWidxVector(builder, numElems: int) -> int:
     return Arf2IndexStartWidxVector(builder, numElems)
@@ -103,7 +103,7 @@ def AddHidx(builder, hidx):
     Arf2IndexAddHidx(builder, hidx)
 
 def Arf2IndexStartHidxVector(builder, numElems):
-    return builder.StartVector(4, numElems, 4)
+    return builder.StartVector(2, numElems, 2)
 
 def StartHidxVector(builder, numElems: int) -> int:
     return Arf2IndexStartHidxVector(builder, numElems)

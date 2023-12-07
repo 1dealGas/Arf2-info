@@ -79,13 +79,13 @@ class Arf2:
     var hgo_required:int
 
     # Chart[fumen] body
-    var wish:Array[WishGroup]   # MaxSize: 16384
-    var hint:Array[Hint]   # MaxSize: 16384
+    var wish:Array[WishGroup]   # MaxSize: 65536
+    var hint:Array[Hint]   # MaxSize: 65536
 
     # Traits
     # Camera Args will be adjustable at runtime, and so is panel texts.
     var special_hint:int
-    var dts_layer1:Array[DeltaNode]   # MaxSize: 16384   # DtLimit: 16384ms
+    var dts_layer1:Array[DeltaNode]   # MaxSize: 65536   # DtLimit: 16384ms
     var dts_layer2:Array[DeltaNode]
     var index:Array[Arf2Index]
 ```

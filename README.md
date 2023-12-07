@@ -128,7 +128,7 @@ class Arf2:
 
 ## How to play an `Arf` work in `AcPlay`
 
-1. Acquire `Arf2.fbs` and `flatc` (the [FlatBuffers](https://github.com/google/flatbuffers/releases) compiler) .
+1. Acquire `[Arf2.fbs](https://github.com/1dealGas/Arf2-info/blob/main/Arf2.fbs)` and `flatc` (the [FlatBuffers](https://github.com/google/flatbuffers/releases) compiler) .
 
 2. Export the work, and use the command below to convert the output `export.json` :
    

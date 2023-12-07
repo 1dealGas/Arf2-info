@@ -153,9 +153,11 @@ extern double RCP[8192];
 
 ### JSON  ->  *.arf  Converter
 
-1. Get the `export.json` from `Arf`,  and then Put it into your working directory.
+1. Run `pip install flatbuffers` .
 
-2. Gather files below:
+2. Get the `export.json` from `Arf`,  and then Put it into your working directory.
+
+3. Gather files below:
    
    - `Arf2.py`  (In `FlatBuffers-Gemerated` volume)
    
@@ -167,4 +169,4 @@ extern double RCP[8192];
    
    - `ConvertToArf2.py`
 
-3. Open a Terminal and Run `python ConvertToArf2.py export.json` in your working directory.
+4. Open a Terminal and Run `python ConvertToArf2.py export.json` in your working directory.

@@ -85,7 +85,7 @@ class Arf2:
     # Traits
     # Camera Args will be adjustable at runtime, and so is panel texts.
     var special_hint:int
-    var dts_layer1:Array[DeltaNode]
+    var dts_layer1:Array[DeltaNode]   # MaxSize: 16384   # DtLimit: 16384ms
     var dts_layer2:Array[DeltaNode]
     var index:Array[Arf2Index]
 ```
@@ -135,10 +135,10 @@ float rotdeg;
 
 // Internal
 // Maps & Pointers Omitted
-int special_hint;
-int dt_progress;
-int dt_layer1;
-int dt_layer2;
+uint16_t special_hint;
+uint16_t dt_progress;
+uint32_t dt_layer1;
+uint32_t dt_layer2;
 
 // Cache
 extern float SIN[901];

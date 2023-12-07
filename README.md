@@ -134,11 +134,11 @@ class Arf2:
    
    `flatc --binary Arf2.fbs export.json`
 
-3. Utilize the conversion result `export.bin` .
-
-   Usually, we rename the conversion result to `[id].arf` .
+3. Utilize the conversion result `export.bin` :
    
    ```lua
    local fm = sys.get_resource("Arf/export.bin")
    Arf2.InitArf(fm)
    ```
+
+   (Usually, we rename the conversion result to `[id].arf` .)

@@ -2,7 +2,7 @@
 // (c) 2023- 1dealGas, under the MIT License.
 
 table WishChild {
-    p:uint8;   // (8)dtime_x105, Runtime Only
+    p:uint8;   // (8)anode_progress, Runtime Only
     dt:uint32;   // (32)dtime_x105
     anodes:[uint32];   // AngleNode: (13)degree+(19)ms
 }
@@ -14,8 +14,8 @@ table WishGroup {
 }
 
 table Arf2Index {
-    widx:[uint32];
-    hidx:[uint32];
+    widx:[uint16];
+    hidx:[uint16];
 }
 
 
@@ -23,9 +23,9 @@ table Arf2 {
 
     // Info
     before:uint32;
-    total_hints:uint32;
-    wgo_required:uint32;
-    hgo_required:uint32;
+    total_hints:uint16;
+    wgo_required:uint8;
+    hgo_required:uint8;
 
     // Chart[fumen] body
     wish:[WishGroup];

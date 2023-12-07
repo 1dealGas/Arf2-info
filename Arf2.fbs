@@ -6,21 +6,23 @@ table WishChild {
     dt:uint32;   // (32)dtime_x105
     anodes:[uint32];   // AngleNode: (13)degree+(19)ms
 }
+
 table WishGroup {
     info:uint32;   // (10)child_progress+(5)node_progress+(1)layer+(16)max_vsb_dist
     nodes:[uint64];   // PosNode: (9)cv_init+(9)cv_end+(3)et+(13)x+(12)y+(18)ms
     childs:[WishChild];
 }
+
 table Arf2Index {
     widx:[uint32];
     hidx:[uint32];
 }
 
+
 table Arf2 {
 
     // Info
-    init_ms:uint32;
-    end_ms:uint32;
+    before:uint32;
     total_hints:uint32;
     wgo_required:uint32;
     hgo_required:uint32;

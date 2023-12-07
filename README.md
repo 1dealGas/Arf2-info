@@ -1,6 +1,6 @@
-# Arf2-utils
+# Arf2-info
 
-Info and tools of **Aerials Chart[fumen] Format 2**.
+Info of **Aerials Chart[fumen] Format 2**.
 
 ### EaseType
 
@@ -92,7 +92,7 @@ class Arf2:
 
 ## Arf2 JSON Output  (Encoded)
 
-`0` represents an encoded interger, `[0]`  &  `""` represent multiple encoded intergers.
+`0` represents an encoded interger, `[0]` represents multiple encoded intergers.
 
 ```json
 {
@@ -101,72 +101,42 @@ class Arf2:
     "wgo_required": 0,
     "hgo_required": 0,
     "wish": [
-        [
-            0,
-            [0],
-            [
-                [0, ""]
+        {
+            "info": 0,
+            "nodes": [0],
+            "childs": [
+                {
+                    "p": 0,
+                    "dt": 0,
+                    "anodes": [0]
+                }
             ]
-        ]
+        }
     ],
     "hint": [0],
     "special_hint": 0,
     "dts_layer1": [0],
     "dts_layer2": [0],
     "index": [
-        [
-            [0],
-            [0]
-        ]
+        {
+            "widx": [0],
+            "hidx": [0]
+        }
     ]
 }
 ```
 
-## Runtime Variables
+## How to load `Arf2 JSON Output` into `AcPlay`
 
-```cpp
-// API
-Arf2 Arf;
-float xscale;
-float yscale;
-float xdelta;
-float ydelta;
-float rotdeg;
+1. Acquire the FlatBuffers compiler `flatc` .
 
-// Internal
-// Maps & Pointers Omitted
-uint16_t special_hint;
-uint16_t dt_progress;
-uint32_t dt_layer1;
-uint32_t dt_layer2;
-
-// Cache
-extern float SIN[901];
-extern float COS[901];
-extern float ESIN[1001];
-extern float ECOS[1001];
-extern float SQRT[1001];
-extern double RCP[8192];
-```
-
-## Tools
-
-### JSON  ->  *.arf  Converter
-
-1. Run `pip install flatbuffers` .
-
-2. Get the `export.json` from `Arf`,  and then Put it into your working directory.
-
-3. Gather files below:
+2. Convert the output :
    
-   - `Arf2.py`  (In `FlatBuffers-Gemerated` volume)
-   
-   - `Arf2Index.py` (In `FlatBuffers-Gemerated` volume)
-   
-   - `WishChild.py` (In `FlatBuffers-Gemerated` volume)
-   
-   - `WishGroup.py` (In `FlatBuffers-Gemerated` volume)
-   
-   - `ConvertToArf2.py`
+   `flatc --binary Arf2.fbs export.json`
 
-4. Open a Terminal and Run `python ConvertToArf2.py export.json` in your working directory.
+3. Utilize the conversion result `export.bin` :
+   
+   ```lua
+   local fm = sys.get_resource("Arf/export.bin")
+   Arf2.InitArf(fm)
+   ```

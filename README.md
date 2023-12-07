@@ -73,8 +73,7 @@ class Arf2Index:
 class Arf2:
 
     # Info
-    var init_ms:int
-    var end_ms:int
+    var before:int
     var total_hints:int
     var wgo_required:int
     var hgo_required:int
@@ -97,8 +96,7 @@ class Arf2:
 
 ```json
 {
-    "init_ms": 0,
-    "end_ms": 0,
+    "before": 0,
     "total_hints": 0,
     "wgo_required": 0,
     "hgo_required": 0,

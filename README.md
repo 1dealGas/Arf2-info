@@ -132,7 +132,7 @@ class Arf2:
 
 2. Export the work, and use the command below to convert the output `export.json` :
    
-   `flatc --binary Arf2.fbs export.json`
+   `flatc --b --force-defaults Arf2.fbs export.json`
 
 3. Utilize the conversion result `export.bin` :
    

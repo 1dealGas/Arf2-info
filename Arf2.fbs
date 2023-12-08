@@ -4,7 +4,7 @@
 table WishChild {
     p:uint8;   // (8)anode_progress, Runtime Only
     dt:uint32;   // (32)dtime_x105
-    anodes:[uint32];   // AngleNode: (13)degree+(19)ms
+    anodes:[uint32];   // AngleNode: (12)degree+(2)et+(18)ms
 }
 
 table WishGroup {

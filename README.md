@@ -16,13 +16,14 @@ ESIN  ->  Sin ( ratio * π/2 ) ;  ECOS  ->  1 - Cos ( ratio * π/2 ) .
 ```gdscript
 # Compressible
 class AngleNode:
-    19 var ms:int   # [0,512000]
-    13 var degree:int   # [-4096,4095]
+    18 var ms:int   # [0,512000]   # Precision: 2ms
+    2 var easetype:int
+    12 var degree:int   # [-1800,1800]
 
 class PosNode:
     9 var curve_init:float   # [0,1]   # Precision: 1/512
     9 var curve_end:float   # [0,1]   # Precision: 1/512
-    2 var easetype:int   # See "EaseType" Section.
+    2 var easetype:int
     13 var x:float   # [-16,32]   # Precision: 1/128
     12 var y:float   # [8,16]   # Precisin: 1/128
     19 var ms:int   # [0,512000]
@@ -44,8 +45,8 @@ class Hint:
     19 var ms:int   # [0,512000]
 
     # Runtime Only
-    # Non-Judged:    TAG==0 -> Not-lit    TAG==1 -> Lit
-    # Judged:        TAG==0 -> No Hint    TAG==1 -> With Hint
+    # Non-Judged:    TAG==0 ->  Not-lit    TAG==1 ->  Lit
+    # Judged:        TAG==0 ->  No Hint    TAG==1 ->  With Hint
     19 var judged_mstime:int   # [0,512000]
     1 var TAG:bool
 
@@ -53,13 +54,13 @@ class Hint:
 # Inompressible
 class WishChild:
     32 var dtime_x105:int   # See Class "DeltaNode".
-    8 var anodes:Array[AngleNode]   # MaxSize: 256   # DtLimit: 8192ms
+    8 var anodes:Array[AngleNode]   # MaxSize: 256   # DtLimit: 16384ms
 
 class WishGroup:
     16 var max_visible_distance:float   # [0,8)   # Precision: 1/8192
     1 var layer:int   # 0 or 1
 
-    5 var nodes:Array[PosNode]   # MaxSize: 32   # DtLimit: 16384ms
+    5 var nodes:Array[PosNode]   # MaxSize: 32   # DtLimit: 8192ms
     10 var childs:Array[WishChild]   # MaxSize: 1024
 
     # Editor Only
@@ -84,8 +85,8 @@ class Arf2:
     # Traits
     # Camera Args will be adjustable at runtime, and so is panel texts.
     var special_hint:int
-    var dts_layer1:Array[DeltaNode]   # MaxSize: 65536   # DtLimit: 16384ms
-    var dts_layer2:Array[DeltaNode]
+    var dts_layer1:Array[DeltaNode]   # MaxSize: 65536
+    var dts_layer2:Array[DeltaNode]   # DtLimit: 16384ms
     var index:Array[Arf2Index]
 ```
 

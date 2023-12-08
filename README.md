@@ -6,10 +6,10 @@ Info of **Aerials Chart[fumen] Format 2**.
 
 ESIN  ->  Sin ( ratio * π/2 ) ;  ECOS  ->  1 - Cos ( ratio * π/2 ) .
 
-|       | 0        | 1      | 2      | 3                                                          |
-|:-----:|:--------:|:------:|:------:|:----------------------------------------------------------:|
-| **x** | `Linear` | `ESIN` | `ECOS` | `InQuad`  if  `init <= end` ,  `OutQuad`  if  `init > end` |
-| **y** | `Linear` | `ECOS` | `ESIN` | `InQuad`  if  `init <= end` ,  `OutQuad`  if  `init > end` |
+|       | 0        | 1      | 2      | 3                                                    |
+|:-----:|:--------:|:------:|:------:|:----------------------------------------------------:|
+| **x** | `Linear` | `ESIN` | `ECOS` | `InQuad`  if  `sgn >= 0` ,  `OutQuad`  if  `sgn < 0` |
+| **y** | `Linear` | `ECOS` | `ESIN` | `InQuad`  if  `sgn >= 0` ,  `OutQuad`  if  `sgn < 0` |
 
 ## Editor Arf2 Structure
 
@@ -17,13 +17,13 @@ ESIN  ->  Sin ( ratio * π/2 ) ;  ECOS  ->  1 - Cos ( ratio * π/2 ) .
 # Compressible
 class AngleNode:
     18 var ms:int   # [0,512000]   # Precision: 2ms
-    2 var easetype:int
+    2 var easetype:int   # sgn: degree
     12 var degree:int   # [-1800,1800]
 
 class PosNode:
     9 var curve_init:float   # [0,1]   # Precision: 1/512
     9 var curve_end:float   # [0,1]   # Precision: 1/512
-    2 var easetype:int
+    2 var easetype:int   # sgn: curve_end - curve_init
     13 var x:float   # [-16,32]   # Precision: 1/128
     12 var y:float   # [8,16]   # Precisin: 1/128
     19 var ms:int   # [0,512000]
@@ -45,8 +45,9 @@ class Hint:
     19 var ms:int   # [0,512000]
 
     # Runtime Only
-    # Non-Judged:    TAG==0 ->  Not-lit    TAG==1 ->  Lit
-    # Judged:        TAG==0 ->  No Hint    TAG==1 ->  With Hint
+    # Non-Judged:         TAG==0 ->  Not-lit    TAG==1 ->  Lit
+    # Judged:             TAG==0 ->  No Hint    TAG==1 ->  With Hint
+    # judged_mstime == 1: Sweeped Hint, TAG should be always 0.
     19 var judged_mstime:int   # [0,512000]
     1 var TAG:bool
 

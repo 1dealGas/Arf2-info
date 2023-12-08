@@ -9,7 +9,7 @@ table WishChild {
 
 table WishGroup {
     info:uint32;   // (10)child_progress+(5)node_progress+(1)layer+(16)max_vsb_dist
-    nodes:[uint64];   // PosNode: (9)cv_init+(9)cv_end+(3)et+(13)x+(12)y+(18)ms
+    nodes:[uint64];   // PosNode: (9)cv_init+(9)cv_end+(2)et+(13)x+(12)y+(19)ms
     childs:[WishChild];
 }
 
@@ -29,7 +29,7 @@ table Arf2 {
 
     // Chart[fumen] body
     wish:[WishGroup];
-    hint:[uint64];   // Hint: (1)terminated+(19)judged_ms+(19)ms+(12)y+(13)x
+    hint:[uint64];   // Hint: (1)TAG+(19)judged_ms+(19)ms+(12)y+(13)x
 
     // Traits
     special_hint:uint16;

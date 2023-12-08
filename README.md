@@ -4,15 +4,12 @@ Info of **Aerials Chart[fumen] Format 2**.
 
 ## EaseType
 
-| init<end | 0      | 1          | 2          | 3               | 4          | 5          | 6               | 7          |
-|:--------:|:------:|:----------:|:----------:|:---------------:|:----------:|:----------:|:---------------:|:----------:|
-| **x**    | Linear | **InQuad** | **InCirc** | **Sin(rt*π/2)** | Linear     | Linear     | Linear          | **InQuad** |
-| **y**    | Linear | Linear     | Linear     | Linear          | **InQuad** | **InCirc** | **Sin(rt*π/2)** | **InQuad** |
+ESIN  ->  Sin ( ratio * π/2 ) ;  ECOS  ->  1 - Cos ( ratio * π/2 ) .
 
-| init>end | 0      | 1           | 2           | 3               | 4           | 5           | 6               | 7           |
-|:--------:|:------:|:-----------:|:-----------:|:---------------:|:-----------:|:-----------:|:---------------:|:-----------:|
-| **x**    | Linear | **OutQuad** | **OutCirc** | **Cos(rt*π/2)** | Linear      | Linear      | Linear          | **OutQuad** |
-| **y**    | Linear | Linear      | Linear      | Linear          | **OutQuad** | **OutCirc** | **Cos(rt*π/2)** | **OutQuad** |
+|       | 0        | 1      | 2      | 3                                                          |
+|:-----:|:--------:|:------:|:------:|:----------------------------------------------------------:|
+| **x** | `Linear` | `ESIN` | `ECOS` | `InQuad`  if  `init <= end` ,  `OutQuad`  if  `init > end` |
+| **y** | `Linear` | `ECOS` | `ESIN` | `InQuad`  if  `init <= end` ,  `OutQuad`  if  `init > end` |
 
 ## Editor Arf2 Structure
 
@@ -25,10 +22,10 @@ class AngleNode:
 class PosNode:
     9 var curve_init:float   # [0,1]   # Precision: 1/512
     9 var curve_end:float   # [0,1]   # Precision: 1/512
-    3 var easetype:int   # See "EaseType" Section.
+    2 var easetype:int   # See "EaseType" Section.
     13 var x:float   # [-16,32]   # Precision: 1/128
     12 var y:float   # [8,16]   # Precisin: 1/128
-    18 var ms:int   # [0,512000]   # Precision: 2ms
+    19 var ms:int   # [0,512000]
 
 class DeltaNode:
     # ratio = bpm * scale / 15000
@@ -47,8 +44,10 @@ class Hint:
     19 var ms:int   # [0,512000]
 
     # Runtime Only
+    # Non-Judged:    TAG==0 -> Not-lit    TAG==1 -> Lit
+    # Judged:        TAG==0 -> No Hint    TAG==1 -> With Hint
     19 var judged_mstime:int   # [0,512000]
-    1 var terminated:bool
+    1 var TAG:bool
 
 
 # Inompressible
@@ -140,5 +139,5 @@ class Arf2:
    local fm = sys.get_resource("Arf/export.bin")
    Arf2.InitArf(fm)
    ```
-
+   
    (Usually, we rename the conversion result to `[id].arf` .)

@@ -4,7 +4,7 @@ Info of **Aerials Chart[fumen] Format 2**.
 
 ## EaseType
 
-ESIN  ->  Sin ( ratio * π/2 ) ;  ECOS  ->  1 - Cos ( ratio * π/2 ) .
+`ESIN`  ->  Sin ( ratio * π/2 )            `ECOS`  ->  1 - Cos ( ratio * π/2 ) 
 
 |           | 0        | 1        | 2      | 3                                                    |
 |:---------:|:--------:|:--------:|:------:|:----------------------------------------------------:|
@@ -127,8 +127,6 @@ class Arf2:
     ]
 }
 ```
-
-## 
 
 ## How to play an `Arf` work in `AcPlay`
 

@@ -6,10 +6,11 @@ Info of **Aerials Chart[fumen] Format 2**.
 
 ESIN  ->  Sin ( ratio * π/2 ) ;  ECOS  ->  1 - Cos ( ratio * π/2 ) .
 
-|       | 0        | 1      | 2      | 3                                                    |
-|:-----:|:--------:|:------:|:------:|:----------------------------------------------------:|
-| **x** | `Linear` | `ESIN` | `ECOS` | `InQuad`  if  `sgn >= 0` ,  `OutQuad`  if  `sgn < 0` |
-| **y** | `Linear` | `ECOS` | `ESIN` | `InQuad`  if  `sgn >= 0` ,  `OutQuad`  if  `sgn < 0` |
+|           | 0        | 1        | 2      | 3                                                    |
+|:---------:|:--------:|:--------:|:------:|:----------------------------------------------------:|
+| **PosX**  | `Linear` | `ESIN`   | `ECOS` | `InQuad`  if  `sgn >= 0` ,  `OutQuad`  if  `sgn < 0` |
+| **PosY**  | `Linear` | `ECOS`   | `ESIN` | `InQuad`  if  `sgn >= 0` ,  `OutQuad`  if  `sgn < 0` |
+| **Angle** | `Stasis` | `Linear` | `ESIN` | `ECOS`                                               |
 
 ## Editor Arf2 Structure
 
@@ -17,7 +18,7 @@ ESIN  ->  Sin ( ratio * π/2 ) ;  ECOS  ->  1 - Cos ( ratio * π/2 ) .
 # Compressible
 class AngleNode:
     18 var ms:int   # [0,512000]   # Precision: 2ms
-    2 var easetype:int   # sgn: degree
+    2 var easetype:int
     12 var degree:int   # [-1800,1800]
 
 class PosNode:
@@ -127,19 +128,27 @@ class Arf2:
 }
 ```
 
+## 
+
 ## How to play an `Arf` work in `AcPlay`
 
-1. Acquire `Arf2.fbs` and `flatc` (the [FlatBuffers](https://github.com/google/flatbuffers/releases) compiler) .
+============================
 
-2. Export the work, and use the command below to convert the output `export.json` :
+**Deprecated, working in progress**
+
+============================
+
+1. ~~Acquire `Arf2.fbs` and `flatc` (the [FlatBuffers](https://github.com/google/flatbuffers/releases) compiler) .~~
+
+2. ~~Export the work, and use the command below to convert the output `export.json` :~~
    
-   `flatc -b --force-defaults Arf2.fbs export.json`
+   ~~`flatc -b --force-defaults Arf2.fbs export.json`~~
 
-3. Utilize the conversion result `export.bin` :
+3. ~~Utilize the conversion result `export.bin` :~~
    
    ```lua
    local fm = sys.get_resource("Arf/export.bin")
    Arf2.InitArf(fm)
    ```
    
-   (Usually, we rename the conversion result to `[id].arf` .)
+   ~~(Usually, we rename the conversion result to `[id].arf` .)~~
